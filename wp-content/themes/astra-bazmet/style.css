@@ -1,0 +1,311 @@
+/*
+Theme Name: Astra БазМет
+Theme URI: http://127.0.0.1:8080
+Description: Дочерняя тема Astra для ООО «БазМет». Ручная доработка для лабораторной работы № 10.
+Author: Михайлов М. И.
+Template: astra
+Version: 1.0.3
+Text Domain: astra-bazmet
+*/
+
+/*
+ * Ручная стилизация витрины (не через кастомайзер Astra).
+ * Классы совпадают с разметкой шорткодов в functions.php:
+ *   .bazmet-hero / .bazmet-catalog / .bazmet-card
+ *   .bazmet-services / .bazmet-options / .bazmet-order*
+ */
+
+/* ---------------------------------------------------------------------------
+   Герой на главной — [bazmet_hero]
+   --------------------------------------------------------------------------- */
+.bazmet-hero {
+  background: linear-gradient(135deg, #1f3b4d 0%, #2f6f6a 100%);
+  color: #fff;
+  padding: 3rem 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.bazmet-hero h1 {
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.bazmet-hero p {
+  margin: 0;
+  opacity: 0.92;
+}
+
+/* ---------------------------------------------------------------------------
+   Каталог — [bazmet_catalog]
+   Сетка 4 плашки → 3 → 2 → 1 (адаптив)
+   --------------------------------------------------------------------------- */
+.bazmet-catalog {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .bazmet-catalog {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .bazmet-catalog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .bazmet-catalog {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Карточка изделия: картинка + заголовок + кнопка «Выбрать размер» */
+.bazmet-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #d7e0e4;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.bazmet-card-img {
+  display: block;
+  margin: 0 0 0.75rem;
+  flex: 0 0 auto;
+}
+
+.bazmet-card-img img {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 6px;
+  background: #eef2f4;
+}
+
+/* Заголовок и описание обрезаем, чтобы карточки были одной высоты */
+.bazmet-card h3 {
+  font-size: 1rem;
+  line-height: 1.35;
+  margin: 0 0 0.45rem;
+  min-height: 2.7em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bazmet-card .bazmet-meta {
+  margin: 0 0 0.4rem;
+  min-height: 1.3em;
+  font-size: 0.9rem;
+  color: #456;
+}
+
+.bazmet-card > p {
+  margin: 0 0 0.75rem;
+  flex: 1 1 auto;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bazmet-card > p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.bazmet-card .bazmet-btn {
+  align-self: flex-start;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+   Услуги — [bazmet_services]
+   Та же сетка 4→1, карточка с цветной полоской слева
+   --------------------------------------------------------------------------- */
+.bazmet-services {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .bazmet-services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .bazmet-services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .bazmet-services {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bazmet-service {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  border-left: 4px solid #2f6f6a;
+  padding: 1rem 1rem 1rem 1.1rem;
+  background: #f7fafb;
+  border-radius: 0 8px 8px 0;
+}
+
+.bazmet-service h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  min-height: 2.6em;
+}
+
+.bazmet-service > p:first-of-type {
+  margin: 0 0 0.85rem;
+  flex: 1 1 auto;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.bazmet-service > p:last-child {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.bazmet-service .bazmet-btn {
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------------------------
+   Общие элементы: футер-пометка, кнопка, селекты на изделии, форма заявки
+   --------------------------------------------------------------------------- */
+
+/* Полоска внизу страницы (wp_footer в functions.php) */
+.bazmet-footer-note {
+  text-align: center;
+  padding: 0.75rem;
+  background: #1f3b4d;
+  color: #f2f6f7;
+  font-size: 0.92rem;
+}
+
+/* Блок селектов на карточке изделия (материал, диаметр…) */
+.bazmet-options {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  background: #f4f8f9;
+  border-radius: 8px;
+  border: 1px solid #d7e0e4;
+}
+
+.bazmet-options h3,
+.bazmet-order-summary h3 {
+  margin-top: 0;
+}
+
+.bazmet-options-form,
+.bazmet-order-form {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 420px;
+}
+
+.bazmet-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.bazmet-field select,
+.bazmet-field input,
+.bazmet-field textarea {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #c5d0d6;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* Кнопка «Выбрать размер» / «Оставить заявку» */
+.bazmet-btn {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.7rem 1.1rem;
+  background: #2f6f6a;
+  color: #fff !important;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bazmet-btn:hover {
+  background: #245854;
+  color: #fff !important;
+}
+
+/* Сводка выбранной конфигурации на /zayavka/ — [bazmet_order] */
+.bazmet-order-summary {
+  display: inline-block;
+  max-width: 280px;
+  width: 100%;
+  vertical-align: top;
+  background: #f7fafb;
+  border-left: 4px solid #2f6f6a;
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1rem 1rem 1.1rem;
+  margin: 0 0 1.25rem;
+  box-sizing: border-box;
+}
+
+.bazmet-order-summary h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.bazmet-order-summary pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #334;
+}
+
+.bazmet-order-error {
+  color: #b00020;
+  font-weight: 600;
+}
+
+.bazmet-order-success {
+  padding: 1.25rem;
+  background: #e8f6ee;
+  border-radius: 8px;
+}

@@ -1,0 +1,6 @@
+.DS_Store
+*.log
+wp-content/cache/
+wp-content/upgrade/
+wp-content/uploads/wc-logs/
+wp-cli.phar
